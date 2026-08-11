@@ -1,6 +1,15 @@
 const { Client, GatewayIntentBits } = require('discord.js');
 const { GoogleGenerativeAI } = require('@google/generative-ai');
+const express = require('express');
 
+// إعداد خادم Web بسيط لخدمة Render المجانية
+const app = express();
+app.get('/', (req, res) => res.send('Flora is Online!'));
+app.listen(process.env.PORT || 3000, () => {
+  console.log('Web server running...');
+});
+
+// إعداد بوت الديسكورد
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
